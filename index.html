@@ -94,6 +94,7 @@
             const isJP=await getIPaddress();
             if (!isJP.result.result) { location.replace('https://n138-kz.github.io/'); }
             sessionStorage.setItem( (btoa(location.href)).slice(0, 16) + '.'+'n138kz.isJP', JSON.stringify(isJP) );
+            console.log('n138kz.isJP', isJP);
             const remote_addr=isJP.request;
             domitem[0]=document.createElement('a');
             domitem[0].href=`https://ipinfo.io/${remote_addr.request}`;
