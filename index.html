@@ -52,16 +52,16 @@
         }
         window.addEventListener('DOMContentLoaded', async ()=>{
             let domitem=[];
-            const github_repos=await getGithubRepos('n138-kz/sendFile2Disco');
-            sessionStorage.setItem( (btoa(location.href)).slice(0, 16) + '.'+'github.repos.current', JSON.stringify(github_repos) );
-            sessionStorage.setItem( (btoa(location.href)).slice(0, 16) + '.'+'github.repos.'+github_repos.full_name.replace('/','.'), JSON.stringify(github_repos) );
-            sessionStorage.setItem( (btoa(location.href)).slice(0, 16) + '.'+'github.ratelimit', JSON.stringify(await getGithubRatelimit()) );
-            
             const isJP=await getIPaddress();
             if (!isJP.result.result) { location.replace('https://n138-kz.github.io/'); }
             sessionStorage.setItem( (btoa(location.href)).slice(0, 16) + '.'+'n138kz.isJP', JSON.stringify(isJP) );
             const remote_addr=isJP.request;
 
+            const github_repos=await getGithubRepos('n138-kz/sendFile2Disco');
+            sessionStorage.setItem( (btoa(location.href)).slice(0, 16) + '.'+'github.repos.current', JSON.stringify(github_repos) );
+            sessionStorage.setItem( (btoa(location.href)).slice(0, 16) + '.'+'github.repos.'+github_repos.full_name.replace('/','.'), JSON.stringify(github_repos) );
+            sessionStorage.setItem( (btoa(location.href)).slice(0, 16) + '.'+'github.ratelimit', JSON.stringify(await getGithubRatelimit()) );
+            
             const loaded_config=await getConfig();
             domitem[0]=document.createElement('a');
             domitem[0].href=`https://ipinfo.io/${remote_addr.request}`;
