@@ -69,6 +69,10 @@
             if (!isJP.result.result) { location.replace('https://n138-kz.github.io/'); }
             sessionStorage.setItem( (btoa(location.href)).slice(0, 16) + '.'+'n138kz.isJP', JSON.stringify(isJP) );
             const remote_addr=isJP.request;
+            domitem[0]=document.createElement('a');
+            domitem[0].href=`https://ipinfo.io/${remote_addr.request}`;
+            domitem[0].innerText=`${remote_addr.detail}`;
+            document.querySelector('#remote_address_print').appendChild(domitem[0]);
 
             const github_repos=await getGithubRepos('n138-kz/sendFile2Disco');
             sessionStorage.setItem( (btoa(location.href)).slice(0, 16) + '.'+'github.repos.current', JSON.stringify(github_repos) );
@@ -80,10 +84,6 @@
             sessionStorage.setItem( (btoa(location.href)).slice(0, 16) + '.'+'github.ratelimit', JSON.stringify(github_rates) );
             
             const loaded_config=await getConfig();
-            domitem[0]=document.createElement('a');
-            domitem[0].href=`https://ipinfo.io/${remote_addr.request}`;
-            domitem[0].innerText=`${remote_addr.detail}`;
-            document.querySelector('#remote_address_print').appendChild(domitem[0]);
             let wh_endpoint=loaded_config.external.discord.webhooks[0].url;
             wh_endpoint=wh_endpoint.split('/');
             wh_endpoint[wh_endpoint.length-2]=atob(wh_endpoint[wh_endpoint.length-2]);
