@@ -53,6 +53,8 @@
             domitem[0].innerText=`${remote_addr.detail}`;
             document.querySelector('#remote_address_print').appendChild(domitem[0]);
             let wh_endpoint=loaded_config.external.discord.webhooks[0].url;
+            console.log(wh_endpoint);
+            
             document.querySelector('#sendFile2Discos_main').action=wh_endpoint;
 		});
 	</script>
