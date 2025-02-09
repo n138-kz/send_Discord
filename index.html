@@ -84,21 +84,21 @@
 
             let data=new FormData();
             data.append('content', content);
-            data.append('files', files);
+            data.append('file', files[0]);
             console.log({
-                'url': url,
-                'headers': header,
-                'files': files,
-                'content': content,
-                'data': data,
+                url: url,
+                headers: header,
+                files: files,
+                content: content,
+                data: data,
             });
             console.log(...data.entries());
 
             let response = await fetch(url,{
-                'method': 'POST',
-                'mode': 'cors',
-                'headers': header,
-                'body': data,
+                method: 'POST',
+                mode: 'cors',
+                headers: header,
+                body: data,
             });
             let json = await response.json();
             console.log({
