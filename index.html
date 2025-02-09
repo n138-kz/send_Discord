@@ -63,6 +63,10 @@
             const json = await response.json();
             return await json;
         }
+        async function pushToDiscord() {
+            let url=location.origin+location.pathname+path;
+            
+        }
         window.addEventListener('DOMContentLoaded', async ()=>{
             let domitem=[];
             const isJP=await getIPaddress();
@@ -108,8 +112,6 @@
     <form action="" method="POST" accept="multipart/form-data" id="sendFile2Discos_main">
         <table>
             <thead>
-                <input type="hidden" name="remote_address" id="remote_address" />
-                <input type="hidden" name="location_href" id="location_href" />
                 <tr>
                     <th></th>
                     <td><span id="remote_address_print"></span></td>
@@ -131,7 +133,7 @@
                 <tr>
                     <th></th>
                     <td>
-                        <input type="submit" value="Submit" onsubmit="location.reload();">
+                        <input type="button" value="Submit" onclick="pushToDiscord">
                     </td>
                 </tr>
             </tbody>
