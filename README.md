@@ -16,6 +16,12 @@
 [![GitHub language count](https://img.shields.io/github/languages/count/n138-kz/sendFile2Disco)](/../../)
 [![GitHub top language](https://img.shields.io/github/languages/top/n138-kz/sendFile2Disco)](/../../)
 
+## Github RestAPI
+
+```http
+GET https://api.github.com/repos/n138-kz/sendFile2Disco
+```
+
 ## License
 
 [Copyright (c) 2025 Yuu Komiya (n138), Under MIT License](LICENSE)  
