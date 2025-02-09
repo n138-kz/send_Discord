@@ -78,6 +78,10 @@
             document.querySelector('#sendFile2Discos_main').action=wh_endpoint;
             document.querySelector('#sendFile2Discos_main #files').addEventListener('change',(e)=>{
                 console.log(e.target.files);
+                document.querySelector('#sendFile2Discos_main #content').value='Attated files: ';
+                e.target.files.map((e1)=>{
+                    document.querySelector('#sendFile2Discos_main #content').value+=e1.name;
+                });
             });
 		});
 	</script>
