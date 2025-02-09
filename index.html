@@ -106,7 +106,7 @@
             const github_deploy=await getGithubDeployment(github_repos);
             sessionStorage.setItem( (btoa(location.href)).slice(0, 16) + '.'+'github.deploy.latest', JSON.stringify(github_deploy) );
             const github_rates=await getGithubRatelimit();
-            github_rates.rate.reset_humanable=new Date(github_rates.rate.reset);
+            github_rates.rate.reset_humanable=new Date(github_rates.rate.reset*10**3);
             sessionStorage.setItem( (btoa(location.href)).slice(0, 16) + '.'+'github.ratelimit', JSON.stringify(github_rates) );
             
             document.querySelector('#sendFile2Discos_main #files').addEventListener('change',(e)=>{
