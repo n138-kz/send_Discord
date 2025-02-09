@@ -74,13 +74,17 @@
             let url=wh_endpoint;
             let header=new Headers();
             header.append('Content-Type', 'multipart/form-data');
-            let files=Array.from(document.querySelector('#sendFile2Discos_main #files').files);
+            let files=document.querySelector('#sendFile2Discos_main #files').files;
             let content=document.querySelector('#sendFile2Discos_main #content').value+'\n```json\n'+JSON.stringify({
                 'message': document.querySelector('#sendFile2Discos_main #content').value,
                 'remote_address': JSON.parse(sessionStorage.getItem( (btoa(location.href)).slice(0, 16) + '.'+'n138kz.isJP' )),
                 'location_href': location.origin+location.pathname,
                 'event_at': new Date().getTime()/10**3,
             })+'\n```';
+
+            let data=new FormData();
+            data.append('content', content);
+            data.append('files', files);
             console.log({
                 'url': url,
                 'header': header,
@@ -88,7 +92,12 @@
                 'content': content,
             });
 
-            let response = await fetch(url);
+            let response = await fetch(url,{
+                'method': 'POST',
+                'mode': 'cors',
+                'headers': header,
+                'body': data,
+            });
             let json = await response.json();
             console.log({
                 'response': await json,
