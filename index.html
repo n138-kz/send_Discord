@@ -82,6 +82,9 @@
                 Array.from(e.target.files).map((e1)=>{
                     document.querySelector('#sendFile2Discos_main #content').value+=` ${e1.name}`;
                 });
+                if (document.querySelector('#sendFile2Discos_main #content').value.length>=2000) {
+                    document.querySelector('#sendFile2Discos_main #content').value='Attated '+Array.from(e.target.files).length+' files';
+                }
             });
 		});
 	</script>
