@@ -113,7 +113,6 @@
             sessionStorage.setItem( (btoa(location.href)).slice(0, 16) + '.'+'github.ratelimit', JSON.stringify(github_rates) );
             console.log('github.ratelimit', github_rates);
             
-            
             document.querySelector('#sendFile2Discos_main #files').addEventListener('change',(e)=>{
                 console.log(e.target.files);
                 document.querySelector('#sendFile2Discos_main #content').value='Attated files:';
