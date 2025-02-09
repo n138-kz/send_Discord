@@ -44,8 +44,9 @@
             return await json;
         }
         window.addEventListener('DOMContentLoaded', async ()=>{
-            console.log(await getGithubRepos('n138-kz/sendFile2Disco'));
-            console.log(await getIPaddress());
+            const github_repos=await getGithubRepos('n138-kz/sendFile2Disco');
+            const remote_addr=await getIPaddress();
+            const loaded_config=await getConfig();
 		});
 	</script>
 </head>
