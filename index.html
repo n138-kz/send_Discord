@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>sendFile2Discos</title>
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="referrer" content="no-referrer" />
+	<meta http-equiv="refresh" content="300">
+	<link rel="stylesheet" href="https://n138-kz.github.io/lib/master.css?t=0">
+	<script src="https://n138-kz.github.io/lib/master.js"></script>
+	<script>
+		init_setTopMaker();
+		init_setFavicon('https://www.google.com/s2/favicons?size=64&domain='+'https://discord.com');
+		init_setHeaderText();
+	</script>
+	<script>
+		if (!!location.protocol.match(/https?:/) && location.origin!='https://n138-kz.github.io') {
+			location.replace('https://n138-kz.github.io/sendFile2Discos/');
+		}
+	</script>
+	<script>
+        async function getGithubRepos(repos=null) {
+            let url='https://api.github.com/repos/';
+            if (repos===null) { repos=''; }
+
+            const response = await fetch(url);
+            const json = await response.json();
+            return await json;
+        }
+        window.addEventListener('DOMContentLoaded', async ()=>{
+            console.log(getGithubRepos('n138-kz/sendFile2Disco'));
+		});
+	</script>
+</head>
+<body>
+    <form action="" method="POST" accept="multipart/form-data">
+        <input type="hidden" name="" value="" />
+        <input type="file" name="files" multiple>
+        <input type="text" name="content">
+        <input type="submit" value="">
+    </form>
+</body>
+</html>
