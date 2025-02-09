@@ -103,11 +103,16 @@
             const github_repos=await getGithubRepos('n138-kz/sendFile2Disco');
             sessionStorage.setItem( (btoa(location.href)).slice(0, 16) + '.'+'github.repos.current', JSON.stringify(github_repos) );
             sessionStorage.setItem( (btoa(location.href)).slice(0, 16) + '.'+'github.repos.'+github_repos.full_name.replace('/','.'), JSON.stringify(github_repos) );
+            console.log('github.repos.current', github_repos);
+            console.log('github.repos.'+github_repos.full_name.replace('/','.'), github_repos);
             const github_deploy=await getGithubDeployment(github_repos);
             sessionStorage.setItem( (btoa(location.href)).slice(0, 16) + '.'+'github.deploy.latest', JSON.stringify(github_deploy) );
+            console.log('github.deploy.latest', github_deploy);
             const github_rates=await getGithubRatelimit();
             github_rates.rate.reset_humanable=new Date(github_rates.rate.reset*10**3);
             sessionStorage.setItem( (btoa(location.href)).slice(0, 16) + '.'+'github.ratelimit', JSON.stringify(github_rates) );
+            console.log('github.ratelimit', github_rates);
+            
             
             document.querySelector('#sendFile2Discos_main #files').addEventListener('change',(e)=>{
                 console.log(e.target.files);
