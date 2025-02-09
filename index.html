@@ -33,7 +33,8 @@
             let url='https://api.github.com/rate_limit';
 
             const response = await fetch(url);
-            const json = await response.json();
+            let json = await response.json();
+            json.rate.reset_humanable=new Date(json.rate.reset*10**3);
             return await json;
         }
         async function getGithubDeployment(github={deployments_url:''}) {
@@ -126,7 +127,6 @@
             sessionStorage.setItem( (btoa(location.href)).slice(0, 16) + '.'+'github.deploy.latest', JSON.stringify(github_deploy) );
             console.log('github.deploy.latest', github_deploy);
             const github_rates=await getGithubRatelimit();
-            github_rates.rate.reset_humanable=new Date(github_rates.rate.reset*10**3);
             sessionStorage.setItem( (btoa(location.href)).slice(0, 16) + '.'+'github.ratelimit', JSON.stringify(github_rates) );
             console.log('github.ratelimit', github_rates);
             
