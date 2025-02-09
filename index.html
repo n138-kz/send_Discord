@@ -43,11 +43,32 @@
 	</script>
 </head>
 <body>
-    <form action="" method="POST" accept="multipart/form-data">
-        <input type="hidden" name="" value="" />
-        <input type="file" name="files" multiple>
-        <input type="text" name="content">
-        <input type="submit" value="">
+    <form action="" method="POST" accept="multipart/form-data" id="sendFile2Discos_main">
+        <table>
+            <thead>
+                <input type="hidden" name="remote_address" id="remote_address" />
+            </thead>
+            <tbody>
+                <tr>
+                    <th></th>
+                    <td>
+                        <input type="file" name="files[]" id="files" multiple>
+                    </td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td>
+                        <input type="text" name="content" id="content">
+                    </td>
+                </tr>
+                <tr>
+                    <th></th>
+                    <td>
+                        <input type="submit" value="Submit">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
     </form>
 </body>
 </html>
