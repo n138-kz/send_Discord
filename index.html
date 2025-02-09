@@ -37,6 +37,7 @@
             return await json;
         }
         async function getGithubDeployment(github={deployments_url:''}) {
+            if (github.deployments_url==false) { return []; }
             let url=github.deployments_url;
 
             let response = await fetch(url);
