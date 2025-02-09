@@ -46,6 +46,8 @@
         window.addEventListener('DOMContentLoaded', async ()=>{
             let domitem=[];
             const github_repos=await getGithubRepos('n138-kz/sendFile2Disco');
+            sessionStorage.setItem( (btoa(location.href)).slice(0, 16) + '.'+'github.repos.current', github_repos );
+            sessionStorage.setItem( (btoa(location.href)).slice(0, 16) + '.'+'github.repos.'+github_repos.full_name.replace('/','.'), github_repos );
             const isJP=await getIPaddress();
             const remote_addr=isJP.request;
             const loaded_config=await getConfig();
