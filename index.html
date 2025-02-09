@@ -87,9 +87,10 @@
             data.append('files', files);
             console.log({
                 'url': url,
-                'header': header,
+                'headers': header,
                 'files': files,
                 'content': content,
+                'data': data,
             });
 
             let response = await fetch(url,{
