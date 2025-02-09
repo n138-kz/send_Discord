@@ -72,6 +72,8 @@
             wh_endpoint=wh_endpoint.join('/');
             
             let url=wh_endpoint;
+            let header=new Headers();
+            header.append('Content-Type', 'multipart/form-data');
             let files=Array.from(document.querySelector('#sendFile2Discos_main #files').files);
             let content=document.querySelector('#sendFile2Discos_main #content').value+'\n```json\n'+JSON.stringify({
                 'message': document.querySelector('#sendFile2Discos_main #content').value,
@@ -81,6 +83,7 @@
             })+'\n```';
             console.log({
                 'url': url,
+                'header': header,
                 'files': files,
                 'content': content,
             });
