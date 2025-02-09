@@ -29,8 +29,16 @@
             const json = await response.json();
             return await json;
         }
+        async function getIPaddress() {
+            let url='https://api.n138.jp/isJP/';
+
+            const response = await fetch(url);
+            const json = await response.json();
+            return await json.result.request;
+        }
         window.addEventListener('DOMContentLoaded', async ()=>{
             console.log(await getGithubRepos('n138-kz/sendFile2Disco'));
+            console.log(await getIPaddress());
 		});
 	</script>
 </head>
