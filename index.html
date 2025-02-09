@@ -47,6 +47,7 @@
             const github_repos=await getGithubRepos('n138-kz/sendFile2Disco');
             const remote_addr=await getIPaddress();
             const loaded_config=await getConfig();
+            document.querySelector('#remote_address_print').innerText=remote_addr.detail;
             let wh_endpoint=loaded_config.external.discord.webhooks.url;
             document.querySelector('#sendFile2Discos_main').action=wh_endpoint;
 		});
