@@ -44,10 +44,14 @@
             return await json;
         }
         window.addEventListener('DOMContentLoaded', async ()=>{
+            let domitem=[];
             const github_repos=await getGithubRepos('n138-kz/sendFile2Disco');
             const remote_addr=await getIPaddress();
             const loaded_config=await getConfig();
-            document.querySelector('#remote_address_print').innerText=remote_addr.detail;
+            domitem[0]=document.createElement('a');
+            domitem[0].href=`https://ipinfo.io/${remote_addr.request}`;
+            domitem[0].innerText=`${remote_addr.detail}`;
+            document.querySelector('#remote_address_print').appendChild(domitem[0]);
             let wh_endpoint=loaded_config.external.discord.webhooks.url;
             document.querySelector('#sendFile2Discos_main').action=wh_endpoint;
 		});
