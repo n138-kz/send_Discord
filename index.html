@@ -92,6 +92,7 @@
                 'content': content,
                 'data': data,
             });
+            console.log(...data.entries());
 
             let response = await fetch(url,{
                 'method': 'POST',
