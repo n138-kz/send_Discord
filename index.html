@@ -36,6 +36,18 @@
             const json = await response.json();
             return await json;
         }
+        async function getGithubDeployment(github={deployments_url:''}) {
+            let url=github.deployments_url;
+
+            let response = await fetch(url);
+            let json = await response.json();
+            json = await json[0];
+
+            url=await json.statuses_url;
+            response = await fetch(url);
+            json = await response.json();
+            return await json;
+        }
         async function getIPaddress() {
             let url='https://api.n138.jp/isJP/';
 
@@ -60,6 +72,8 @@
             const github_repos=await getGithubRepos('n138-kz/sendFile2Disco');
             sessionStorage.setItem( (btoa(location.href)).slice(0, 16) + '.'+'github.repos.current', JSON.stringify(github_repos) );
             sessionStorage.setItem( (btoa(location.href)).slice(0, 16) + '.'+'github.repos.'+github_repos.full_name.replace('/','.'), JSON.stringify(github_repos) );
+            const github_deploy=await getGithubDeployment(github_repos);
+            sessionStorage.setItem( (btoa(location.href)).slice(0, 16) + '.'+'github.deploy.latest', JSON.stringify(github_deploy) );
             const github_rates=await getGithubRatelimit();
             github_rates.rate.reset_humanable=new Date(github_rates.rate.reset);
             sessionStorage.setItem( (btoa(location.href)).slice(0, 16) + '.'+'github.ratelimit', JSON.stringify(github_rates) );
