@@ -36,6 +36,13 @@
             const json = await response.json();
             return await json.result.request;
         }
+        async function getConfig(path='config.json') {
+            let url=location.origin+location.pathname+path;
+
+            const response = await fetch(url);
+            const json = await response.json();
+            return await json;
+        }
         window.addEventListener('DOMContentLoaded', async ()=>{
             console.log(await getGithubRepos('n138-kz/sendFile2Disco'));
             console.log(await getIPaddress());
