@@ -87,7 +87,12 @@
                 'files': files,
                 'content': content,
             });
-            
+
+            let response = await fetch(url);
+            let json = await response.json();
+            console.log({
+                'response': await json,
+            });
         }
         window.addEventListener('DOMContentLoaded', async ()=>{
             let domitem=[];
