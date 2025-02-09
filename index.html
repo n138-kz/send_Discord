@@ -69,6 +69,9 @@
             wh_endpoint=wh_endpoint.join('/');
             
             document.querySelector('#sendFile2Discos_main').action=wh_endpoint;
+            document.querySelector('#sendFile2Discos_main #files').addEventListener('change',(e)=>{
+                console.log(e.target.files);
+            });
 		});
 	</script>
 </head>
