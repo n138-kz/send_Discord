@@ -34,7 +34,7 @@
 
             const response = await fetch(url);
             const json = await response.json();
-            return await json.result.request;
+            return await json.result;
         }
         async function getConfig(path='config.json') {
             let url=location.origin+location.pathname+path;
@@ -46,7 +46,8 @@
         window.addEventListener('DOMContentLoaded', async ()=>{
             let domitem=[];
             const github_repos=await getGithubRepos('n138-kz/sendFile2Disco');
-            const remote_addr=await getIPaddress();
+            const isJP=await getIPaddress();
+            const remote_addr=isJP.request;
             const loaded_config=await getConfig();
             domitem[0]=document.createElement('a');
             domitem[0].href=`https://ipinfo.io/${remote_addr.request}`;
