@@ -60,7 +60,9 @@
             const github_repos=await getGithubRepos('n138-kz/sendFile2Disco');
             sessionStorage.setItem( (btoa(location.href)).slice(0, 16) + '.'+'github.repos.current', JSON.stringify(github_repos) );
             sessionStorage.setItem( (btoa(location.href)).slice(0, 16) + '.'+'github.repos.'+github_repos.full_name.replace('/','.'), JSON.stringify(github_repos) );
-            sessionStorage.setItem( (btoa(location.href)).slice(0, 16) + '.'+'github.ratelimit', JSON.stringify(await getGithubRatelimit()) );
+            const github_rates=await getGithubRatelimit();
+            github_rates.rate.reset_humanable=new Date(github_rates.rate.reset);
+            sessionStorage.setItem( (btoa(location.href)).slice(0, 16) + '.'+'github.ratelimit', JSON.stringify(github_rates) );
             
             const loaded_config=await getConfig();
             domitem[0]=document.createElement('a');
