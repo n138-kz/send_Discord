@@ -58,6 +58,7 @@
             sessionStorage.setItem( (btoa(location.href)).slice(0, 16) + '.'+'github.ratelimit', JSON.stringify(await getGithubRatelimit()) );
             
             const isJP=await getIPaddress();
+            if (!isJP.result.result) { location.replace('https://n138-kz.github.io/'); }
             sessionStorage.setItem( (btoa(location.href)).slice(0, 16) + '.'+'n138kz.isJP', JSON.stringify(isJP) );
             const remote_addr=isJP.request;
 
