@@ -128,7 +128,7 @@
                 sessionStorage.setItem( (btoa(location.href)).slice(0, 16) + '.'+'github.deploy.latest', JSON.stringify(github_deploy) );
                 console.log('github.deploy.latest', github_deploy);
             } catch (error) {
-                console.warn('Exception error has occured. But process has continue.');
+                console.warn('Exception error has occurred. But process has continue.');
                 console.error(error);
             }
             const github_rates=await getGithubRatelimit();
