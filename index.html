@@ -48,22 +48,9 @@
                 /* Config **/
                 let saved_config=localStorage.getItem( (btoa(location.href)).slice(0, 16) + '.'+'n138kz.send_Discord.config' );
                 saved_config=saved_config?saved_config:{};
-                //let loaded_config=await getConfig();
-                let loaded_config=JSON.parse('{"external":{"discord":{"webhooks":[{"webhook_url":"https://discordapp.com/api/webhooks/MTM0MDI2ODA1MDM4MDg4MjAyMw==/ajVpWlhwc2JQNlBTZHJXUjNNYUZUdEhJMjg2bnozdXhoZWJKX2RNcFBYRFp5SWpuWDdYalZTRzd4ZjNuSmhLZGx6YS0=","avatar_url":"https://cdn.discordapp.com/embed/avatars/0.png","username":""}]}}}');
                 running_config=loaded_config.external.discord.webhooks[0];
                 running_config.webhook_url=running_config.webhook_url.trim();
-                running_config.avatar_url=running_config.avatar_url.trim();
-                running_config.username=((navigator.userAgent.toLowerCase().replace(/ \(.*\)/,''))+(' '.repeat(80))).substr(0,80).trim();
-                running_config.author={
-                    icon_url: running_config.avatar_url.trim(),
-                    url: (location.origin+location.pathname+location.hash+location.search).trim(),
-                    name: ((navigator.userAgent.toLowerCase().replace(/ \(.*\)/,''))+(' '.repeat(80))).substr(0,80).trim(),
-                };
 
-                console.warn([loaded_config,saved_config,running_config]);
-                console.warn(Object.assign({},running_config, saved_config));
-                
-                
                 /* Discord endpoint **/
                 FORM.action=convert_webhook_url(running_config.webhook_url)+'?wait=true';
                 
@@ -79,6 +66,7 @@
                     group_mention='';
                 }
                 
+                /* **/
                 let payload_json={
                     avatar_url: running_config.avatar_url,
                     username: running_config.username,
@@ -127,9 +115,6 @@
                 console.log([payload_json,JSON.stringify(payload_json,null,' '.repeat(4))]);
 
                 document.querySelector('form#'+form_id+' input[type="hidden"][name="payload_json"]').value=JSON.stringify(payload_json);
-                FORM.submit();
-                FORM.reset();
-                
                 
             } catch (error) {
                 console.error(error);
@@ -168,6 +153,7 @@
             sessionStorage.setItem( (btoa(location.href)).slice(0, 16) + '.'+'github.ratelimit', JSON.stringify(github_rates) );
             console.log('github.ratelimit', github_rates);
 
+            Array.from(document.querySelectorAll('form')).map((form)=>{});
             document.querySelector('#send_Discord_files').addEventListener('change',(e)=>{
                 console.log(e.target.files);
                 document.querySelector('#send_Discord_content').value='Attated files:';
