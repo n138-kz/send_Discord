@@ -87,7 +87,7 @@
                                 name: null,
                             },
                             thumbnail: {
-                                url: running_config.avatar_url,
+                                url: null,
                             },
                             fields: [
                                 { inline: false, name: '', value: '', },
@@ -109,6 +109,7 @@
                 payload_json.embeds[0].author.icon_url=payload_json.avatar_url;
                 payload_json.embeds[0].author.url=payload_json.embeds[0].url;
                 payload_json.embeds[0].author.name=payload_json.username;
+                payload_json.embeds[0].thumbnail.url=payload_json.avatar_url;
                 payload_json.embeds[0].fields=[];
 
                 Array.from(document.querySelector('form#'+form_id+' input[type="file"][name="files[]"]').files).map((file)=>{
