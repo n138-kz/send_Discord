@@ -51,6 +51,8 @@
                 //let loaded_config=await getConfig();
                 let loaded_config=JSON.parse('{"external":{"discord":{"webhooks":[{"webhook_url":"https://discordapp.com/api/webhooks/MTM0MDI2ODA1MDM4MDg4MjAyMw==/ajVpWlhwc2JQNlBTZHJXUjNNYUZUdEhJMjg2bnozdXhoZWJKX2RNcFBYRFp5SWpuWDdYalZTRzd4ZjNuSmhLZGx6YS0=","avatar_url":"https://cdn.discordapp.com/embed/avatars/0.png","username":""}]}}}');
                 running_config=loaded_config.external.discord.webhooks[0];
+                running_config.webhook_url=running_config.webhook_url.trim();
+                running_config.avatar_url=running_config.avatar_url.trim();
                 running_config.username=((navigator.userAgent.toLowerCase().replace(/ \(.*\)/,''))+(' '.repeat(80))).substr(0,80).trim();
 
                 console.warn([loaded_config,saved_config,running_config]);
