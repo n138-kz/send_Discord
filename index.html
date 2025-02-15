@@ -129,8 +129,6 @@
                 });
                 console.log([payload_json,JSON.stringify(payload_json,null,' '.repeat(4))]);
 
-                document.querySelector('form#'+form_id+' input[type="hidden"][name="payload_json"]').value=JSON.stringify(payload_json);
-                
             } catch (error) {
                 console.error(error);
             } finally {
@@ -202,7 +200,6 @@
                     <th>Description</th>
                     <td>
                         <textarea id="send_Discord_content" required></textarea>
-                        <input type="hidden" name="payload_json" id="send_Discord_payload">
                     </td>
                 </tr>
                 <tr>
