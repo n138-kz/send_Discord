@@ -38,6 +38,7 @@
                 url[url.length-1]=btoa(url[url.length-1]);
             }
             url=url.join('/');
+            return url;
         }
         async function pushToDiscord(form_id=null) {
             try {
