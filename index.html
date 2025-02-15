@@ -28,13 +28,19 @@
             return await json;
         }
         async function pushToDiscord() {
+            const loaded_config=await getConfig();
+            let wh_endpoint=loaded_config.external.discord.webhooks[0].url;
+            wh_endpoint=wh_endpoint.split('/');
+            wh_endpoint[wh_endpoint.length-2]=atob(wh_endpoint[wh_endpoint.length-2]);
+            wh_endpoint[wh_endpoint.length-1]=atob(wh_endpoint[wh_endpoint.length-1]);
+            wh_endpoint=wh_endpoint.join('/');
             
             let url=wh_endpoint;
             let header=new Headers();
             header.append('Content-Type', 'multipart/form-data');
             let files=document.querySelector('#send_Discord_main #files').files;
-            let content=document.querySelector('#send_Discord_content').value+'\n```json\n'+JSON.stringify({
-                'message': document.querySelector('#send_Discord_content').value,
+            let content=document.querySelector('#send_Discord_main #content').value+'\n```json\n'+JSON.stringify({
+                'message': document.querySelector('#send_Discord_main #content').value,
                 'remote_address': JSON.parse(sessionStorage.getItem( (btoa(location.href)).slice(0, 16) + '.'+'n138kz.isJP' )),
                 'location_href': location.origin+location.pathname,
                 'event_at': new Date().getTime()/10**3,
@@ -94,12 +100,12 @@
             
             document.querySelector('#send_Discord_main #files').addEventListener('change',(e)=>{
                 console.log(e.target.files);
-                document.querySelector('#send_Discord_content').value='Attated files:';
+                document.querySelector('#send_Discord_main #content').value='Attated files:';
                 Array.from(e.target.files).map((e1)=>{
-                    document.querySelector('#send_Discord_content').value+=` ${e1.name}`;
+                    document.querySelector('#send_Discord_main #content').value+=` ${e1.name}`;
                 });
-                if (document.querySelector('#send_Discord_content').value.length>=2000) {
-                    document.querySelector('#send_Discord_content').value='Attated '+Array.from(e.target.files).length+' files';
+                if (document.querySelector('#send_Discord_main #content').value.length>=2000) {
+                    document.querySelector('#send_Discord_main #content').value='Attated '+Array.from(e.target.files).length+' files';
                 }
             });
 		});
@@ -124,7 +130,7 @@
                 <tr>
                     <th>Description</th>
                     <td>
-                        <input type="text" name="content" id="send_Discord_content" required>
+                        <input type="text" name="content" id="content" required>
                     </td>
                 </tr>
                 <tr>
