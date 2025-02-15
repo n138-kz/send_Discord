@@ -100,7 +100,7 @@
                 };
                 payload_json.embeds[0].fields=[];
 
-                Array.from(document.querySelector('form#'+'send_Discord_main input[type="file"][name="files[]"]').files).map((file)=>{
+                Array.from(document.querySelector('form#'+form_id+' input[type="file"][name="files[]"]').files).map((file)=>{
                     payload_json.embeds[0].fields.push({
                         inline: false,
                         name: '',
@@ -114,7 +114,7 @@
                 });
                 console.log([payload_json,JSON.stringify(payload_json,null,' '.repeat(4))]);
 
-                document.querySelector('form#'+'send_Discord_main input[type="hidden"][name="payload_json"]').value=JSON.stringify(payload_json);
+                document.querySelector('form#'+form_id+' input[type="hidden"][name="payload_json"]').value=JSON.stringify(payload_json);
                 FORM.submit();
                 
                 
