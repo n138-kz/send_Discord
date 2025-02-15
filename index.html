@@ -103,7 +103,6 @@
                 payload_json.embeds[0].fields=[];
                 payload_json.embeds[0].footer.text=':';
                 payload_json.embeds[0].footer.icon_url=payload_json.avatar_url;
-
                 Array.from(document.querySelector('form#'+form_id+' input[type="file"][name="files[]"]').files).map((file)=>{
                     payload_json.embeds[0].fields.push({
                         inline: false,
