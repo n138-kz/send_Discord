@@ -1,1 +1,11 @@
-{"external":{"discord":{"webhooks":[{"url":"https://discord.com/api/webhooks/MTMzODA2MjM3NjQ4MTg0OTM4NA==/RllQaFROZEFZWWpIb3d2bngtaUt0Vi1oZmJ5OUYwR3laMEJ0MFFpdkQtZHI4OEhkNUl2YXdPTmYyTm9Kd1REWWtJYm8="}]}}}
+{
+  "external": {
+    "discord": {
+      "webhooks": [
+        {
+          "url": "https://discord.com/api/webhooks/MTMzODA2MjM3NjQ4MTg0OTM4NA==/RllQaFROZEFZWWpIb3d2bngtaUt0Vi1oZmJ5OUYwR3laMEJ0MFFpdkQtZHI4OEhkNUl2YXdPTmYyTm9Kd1REWWtJYm8="
+        }
+      ]
+    }
+  }
+}
