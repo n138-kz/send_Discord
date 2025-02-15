@@ -32,7 +32,7 @@
             let url=wh_endpoint;
             let header=new Headers();
             header.append('Content-Type', 'multipart/form-data');
-            let files=document.querySelector('#send_Discord_main #files').files;
+            let files=document.querySelector('#send_Discord_files').files;
             let content=document.querySelector('#send_Discord_content').value+'\n```json\n'+JSON.stringify({
                 'message': document.querySelector('#send_Discord_content').value,
                 'remote_address': JSON.parse(sessionStorage.getItem( (btoa(location.href)).slice(0, 16) + '.'+'n138kz.isJP' )),
@@ -92,7 +92,7 @@
             sessionStorage.setItem( (btoa(location.href)).slice(0, 16) + '.'+'github.ratelimit', JSON.stringify(github_rates) );
             console.log('github.ratelimit', github_rates);
             
-            document.querySelector('#send_Discord_main #files').addEventListener('change',(e)=>{
+            document.querySelector('#send_Discord_files').addEventListener('change',(e)=>{
                 console.log(e.target.files);
                 document.querySelector('#send_Discord_content').value='Attated files:';
                 Array.from(e.target.files).map((e1)=>{
@@ -118,7 +118,7 @@
                 <tr>
                     <th>Files</th>
                     <td>
-                        <input type="file" name="files" id="files" multiple>
+                        <input type="file" name="files" id="send_Discord_files" multiple>
                     </td>
                 </tr>
                 <tr>
