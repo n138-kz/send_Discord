@@ -123,6 +123,12 @@
                 const myBodies = new FormData();
                 myBodies.append('payload_json', JSON.stringify(payload_json,null,' '.repeat(4)));
 
+                let push=await fetch(running_config.webhook_url, {
+                    method: 'POST',
+                    mode: 'cors',
+                    myHeaders,
+                    myBodies,
+                });
 
             } catch (error) {
                 console.error(error);
