@@ -58,12 +58,7 @@
                 
                 
                 /* Discord endpoint **/
-                let wh_endpoint=running_config.webhook_url;
-                wh_endpoint=wh_endpoint.split('/');
-                wh_endpoint[wh_endpoint.length-2]=atob(wh_endpoint[wh_endpoint.length-2]);
-                wh_endpoint[wh_endpoint.length-1]=atob(wh_endpoint[wh_endpoint.length-1]);
-                wh_endpoint=wh_endpoint.join('/');
-                FORM.action=wh_endpoint;
+                FORM.action=convert_webhook_url(running_config.webhook_url);
                 
                 let url=wh_endpoint;
                 let header=new Headers();
