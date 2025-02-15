@@ -69,23 +69,27 @@
                     embeds: [
                         {
                             title: 'File Uploaded.',
+                            description: ''
+                                +'` '+JSON.parse(sessionStorage.getItem( (btoa(location.href)).slice(0, 16) + '.'+'n138kz.isJP' )).request.request+' `\n'
+                                +'` '+JSON.parse(sessionStorage.getItem( (btoa(location.href)).slice(0, 16) + '.'+'n138kz.isJP' )).request.detail+'` \n',
+                            author: {
+                                name: '',
+                                icon_url: running_config.avatar_url,
+                                url: location.origin+location.pathname+location.hash+location.search,
+                            },
+                            url: location.origin+location.pathname+location.hash+location.search,
                             color: parseInt('0xffa500',16),
+                            thumbnail: {
+                                url: running_config.avatar_url,
+                            },
                             timestamp: new Date().toISOString(),
                             fields: [
-                                {
-                                    inline: true,
-                                    name: 'Client IP',
-                                    value: '`'+JSON.parse(sessionStorage.getItem( (btoa(location.href)).slice(0, 16) + '.'+'n138kz.isJP' )).request.request+'`',
-                                },
-                                {
-                                    inline: true,
-                                    name: 'Client PTR',
-                                    value: '`'+JSON.parse(sessionStorage.getItem( (btoa(location.href)).slice(0, 16) + '.'+'n138kz.isJP' )).request.detail+'`',
-                                },
+                                { inline: false, name: '', value: '', },
                             ],
-                            image: {
-                                url: 'attachment://'
-                            }
+                            footer: {
+                                text: 'attachment://',
+                                icon_url: running_config.avatar_url,
+                            },
                         }
                     ],
                 };
