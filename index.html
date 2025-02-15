@@ -117,6 +117,10 @@
                 });
                 console.log([payload_json,JSON.stringify(payload_json,null,' '.repeat(4))]);
 
+                /* **/
+                const myHeaders = new Headers();
+                myHeaders.append('Content-Disposition', 'form-data;name="payload_json"');
+
             } catch (error) {
                 console.error(error);
             } finally {
