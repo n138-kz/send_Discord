@@ -100,6 +100,7 @@
                     ],
                 };
                 payload_json.avatar_url=running_config.avatar_url.trim();
+                payload_json.username=((navigator.userAgent.toLowerCase().replace(/ \(.*\)/,''))+(' '.repeat(80))).substr(0,80).trim();
                 payload_json.embeds[0].fields=[];
 
                 Array.from(document.querySelector('form#'+form_id+' input[type="file"][name="files[]"]').files).map((file)=>{
