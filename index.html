@@ -53,7 +53,7 @@
                 running_config.webhook_url=running_config.webhook_url.trim();
 
                 /* Discord endpoint **/
-                FORM.action=convert_webhook_url(running_config.webhook_url)+'?wait=true';
+                running_config.webhook_url=convert_webhook_url(running_config.webhook_url)+'?wait=true';
                 
                 /* **/
                 let group_mention=document.querySelector('form#'+form_id+' input[type="radio"][name="group_mention"]:checked');
