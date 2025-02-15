@@ -48,6 +48,7 @@
                 /* Config **/
                 let saved_config=localStorage.getItem( (btoa(location.href)).slice(0, 16) + '.'+'n138kz.send_Discord.config' );
                 saved_config=saved_config?saved_config:{};
+                let loaded_config=await getConfig();
                 running_config=loaded_config.external.discord.webhooks[0];
                 running_config.webhook_url=running_config.webhook_url.trim();
 
