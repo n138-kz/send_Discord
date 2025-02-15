@@ -27,6 +27,18 @@
             const json = await response.json();
             return await json;
         }
+        function convert_webhook_url(url='https://discordapp.com/api/webhooks/bnVsbA==/bnVsbA==',mode='decode') {
+            url=url.split('/');
+            if(false){
+            }elseif(mode=='decode'){
+                url[url.length-2]=atob(url[url.length-2]);
+                url[url.length-1]=atob(url[url.length-1]);
+            }elseif(mode=='encode'){
+                url[url.length-2]=btoa(url[url.length-2]);
+                url[url.length-1]=btoa(url[url.length-1]);
+            }
+            url=url.join('/');
+        }
         async function pushToDiscord(form_id=null) {
             try {
                 if(form_id==false){throw new Error('form_id: Null');}
