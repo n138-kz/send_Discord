@@ -34,7 +34,7 @@
 
                 /* Discord endpoint **/
                 const loaded_config=await getConfig();
-                let wh_endpoint=loaded_config.external.discord.webhooks[0].url;
+                let wh_endpoint=loaded_config.external.discord.webhooks[0].webhook_url;
                 wh_endpoint=wh_endpoint.split('/');
                 wh_endpoint[wh_endpoint.length-2]=atob(wh_endpoint[wh_endpoint.length-2]);
                 wh_endpoint[wh_endpoint.length-1]=atob(wh_endpoint[wh_endpoint.length-1]);
