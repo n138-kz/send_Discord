@@ -78,12 +78,12 @@
                             description: ''
                                 +'` '+JSON.parse(sessionStorage.getItem( (btoa(location.href)).slice(0, 16) + '.'+'n138kz.isJP' )).request.request+' `\n'
                                 +'` '+JSON.parse(sessionStorage.getItem( (btoa(location.href)).slice(0, 16) + '.'+'n138kz.isJP' )).request.detail+'` \n',
+                            url: null,
                             author: {
                                 icon_url: null,
                                 url: null,
                                 name: null,
                             },
-                            url: location.origin+location.pathname+location.hash+location.search,
                             color: parseInt('0xffa500',16),
                             thumbnail: {
                                 url: running_config.avatar_url,
@@ -103,8 +103,9 @@
                 payload_json.username=((navigator.userAgent.toLowerCase().replace(/ \(.*\)/,''))+(' '.repeat(80))).substr(0,80).trim();
                 payload_json.content=group_mention.trim()+'\n'+document.querySelector('#send_Discord_content').value.trim();
                 payload_json.embeds[0].title='File Uploaded.';
+                payload_json.embeds[0].url=(location.origin+location.pathname+location.hash+location.search).trim();
                 payload_json.embeds[0].author.icon_url=payload_json.avatar_url;
-                payload_json.embeds[0].author.url=(location.origin+location.pathname+location.hash+location.search).trim();
+                payload_json.embeds[0].author.url=payload_json.embeds[0].url;
                 payload_json.embeds[0].author.name=payload_json.username;
                 payload_json.embeds[0].fields=[];
 
