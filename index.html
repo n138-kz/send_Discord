@@ -94,6 +94,19 @@
                     ],
                 };
                 payload_json.embeds[0].fields=[];
+
+                Array.from(document.querySelector('form#'+'send_Discord_main input[type="file"][name="files[]"]').files).map((file)=>{
+                    payload_json.embeds[0].fields.push({
+                        inline: false,
+                        name: '',
+                        value: '```json\n'+JSON.stringify({
+                            name: file.name,
+                            size: file.size,
+                            type: file.type,
+                            modify: file.lastModified/10**3,
+                        })+'```\n',
+                    });
+                });
                 console.log(payload_json);
                 
                 
