@@ -54,9 +54,11 @@
                 running_config.webhook_url=running_config.webhook_url.trim();
                 running_config.avatar_url=running_config.avatar_url.trim();
                 running_config.username=((navigator.userAgent.toLowerCase().replace(/ \(.*\)/,''))+(' '.repeat(80))).substr(0,80).trim();
-                running_config.author.icon_url=running_config.avatar_url.trim();
-                running_config.author.url=(location.origin+location.pathname+location.hash+location.search).trim();
-                running_config.author.name=((navigator.userAgent.toLowerCase().replace(/ \(.*\)/,''))+(' '.repeat(80))).substr(0,80).trim();
+                running_config.author={
+                    icon_url: running_config.avatar_url.trim(),
+                    url: (location.origin+location.pathname+location.hash+location.search).trim(),
+                    name: ((navigator.userAgent.toLowerCase().replace(/ \(.*\)/,''))+(' '.repeat(80))).substr(0,80).trim(),
+                };
 
                 console.warn([loaded_config,saved_config,running_config]);
                 console.warn(Object.assign({},running_config, saved_config));
