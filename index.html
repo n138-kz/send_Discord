@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>sendFile2Disco</title>
+    <title>send_Discord</title>
 	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 	<meta name="referrer" content="no-referrer" />
 	<meta http-equiv="refresh" content="300">
@@ -16,7 +16,7 @@
 	</script>
 	<script>
 		if (!!location.protocol.match(/https?:/) && location.origin!='https://n138-kz.github.io') {
-			location.replace('https://n138-kz.github.io/sendFile2Discos/');
+			location.replace('https://n138-kz.github.io/send_Discord/');
 		}
 	</script>
 	<script>
@@ -38,9 +38,9 @@
             let url=wh_endpoint;
             let header=new Headers();
             header.append('Content-Type', 'multipart/form-data');
-            let files=document.querySelector('#sendFile2Discos_main #files').files;
-            let content=document.querySelector('#sendFile2Discos_main #content').value+'\n```json\n'+JSON.stringify({
-                'message': document.querySelector('#sendFile2Discos_main #content').value,
+            let files=document.querySelector('#send_Discord_main #files').files;
+            let content=document.querySelector('#send_Discord_main #content').value+'\n```json\n'+JSON.stringify({
+                'message': document.querySelector('#send_Discord_main #content').value,
                 'remote_address': JSON.parse(sessionStorage.getItem( (btoa(location.href)).slice(0, 16) + '.'+'n138kz.isJP' )),
                 'location_href': location.origin+location.pathname,
                 'event_at': new Date().getTime()/10**3,
@@ -82,7 +82,7 @@
             document.querySelector('#remote_address_print').appendChild(domitem[0]);
 
             try {
-                const github_repos=await getGithubRepos('n138-kz/sendFile2Disco');
+                const github_repos=await getGithubRepos('n138-kz/send_Discord');
                 sessionStorage.setItem( (btoa(location.href)).slice(0, 16) + '.'+'github.repos.current', JSON.stringify(github_repos) );
                 sessionStorage.setItem( (btoa(location.href)).slice(0, 16) + '.'+'github.repos.'+github_repos.full_name.replace('/','.'), JSON.stringify(github_repos) );
                 console.log('github.repos.current', github_repos);
@@ -98,21 +98,21 @@
             sessionStorage.setItem( (btoa(location.href)).slice(0, 16) + '.'+'github.ratelimit', JSON.stringify(github_rates) );
             console.log('github.ratelimit', github_rates);
             
-            document.querySelector('#sendFile2Discos_main #files').addEventListener('change',(e)=>{
+            document.querySelector('#send_Discord_main #files').addEventListener('change',(e)=>{
                 console.log(e.target.files);
-                document.querySelector('#sendFile2Discos_main #content').value='Attated files:';
+                document.querySelector('#send_Discord_main #content').value='Attated files:';
                 Array.from(e.target.files).map((e1)=>{
-                    document.querySelector('#sendFile2Discos_main #content').value+=` ${e1.name}`;
+                    document.querySelector('#send_Discord_main #content').value+=` ${e1.name}`;
                 });
-                if (document.querySelector('#sendFile2Discos_main #content').value.length>=2000) {
-                    document.querySelector('#sendFile2Discos_main #content').value='Attated '+Array.from(e.target.files).length+' files';
+                if (document.querySelector('#send_Discord_main #content').value.length>=2000) {
+                    document.querySelector('#send_Discord_main #content').value='Attated '+Array.from(e.target.files).length+' files';
                 }
             });
 		});
 	</script>
 </head>
 <body>
-    <form action="" method="POST" accept="multipart/form-data" id="sendFile2Discos_main">
+    <form action="" method="POST" accept="multipart/form-data" id="send_Discord_main">
         <table>
             <thead>
                 <tr>
