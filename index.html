@@ -54,6 +54,9 @@
                 running_config.webhook_url=running_config.webhook_url.trim();
                 running_config.avatar_url=running_config.avatar_url.trim();
                 running_config.username=((navigator.userAgent.toLowerCase().replace(/ \(.*\)/,''))+(' '.repeat(80))).substr(0,80).trim();
+                running_config.author.icon_url=running_config.avatar_url.trim();
+                running_config.author.url=(location.origin+location.pathname+location.hash+location.search).trim();
+                running_config.author.name=((navigator.userAgent.toLowerCase().replace(/ \(.*\)/,''))+(' '.repeat(80))).substr(0,80).trim();
 
                 console.warn([loaded_config,saved_config,running_config]);
                 console.warn(Object.assign({},running_config, saved_config));
@@ -73,9 +76,9 @@
                                 +'` '+JSON.parse(sessionStorage.getItem( (btoa(location.href)).slice(0, 16) + '.'+'n138kz.isJP' )).request.request+' `\n'
                                 +'` '+JSON.parse(sessionStorage.getItem( (btoa(location.href)).slice(0, 16) + '.'+'n138kz.isJP' )).request.detail+'` \n',
                             author: {
-                                name: '',
-                                icon_url: running_config.avatar_url,
-                                url: location.origin+location.pathname+location.hash+location.search,
+                                name: running_config.author_name,
+                                icon_url: running_config.author_icon_url,
+                                url: running_config.author_url,
                             },
                             url: location.origin+location.pathname+location.hash+location.search,
                             color: parseInt('0xffa500',16),
