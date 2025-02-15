@@ -21,7 +21,7 @@
 	</script>
 	<script>
         async function getConfig(path='config.json') {
-            let url=location.origin+location.pathname+path;
+            let url=(location.origin+location.pathname).replace(/\/index.html?/,'/')+path;
 
             const response = await fetch(url);
             const json = await response.json();
@@ -32,9 +32,15 @@
                 if(form_id==false){throw new Error('form_id: Null');}
                 const FORM=document.querySelector('form#'+form_id);
 
+                /* Config **/
+                let loaded_config=await getConfig();
+                running_config=loaded_config.external.discord.webhooks[0];
+                running_config.username=navigator.userAgent.toLowerCase();
+                let saved_config=localStorage.getItem( (btoa(location.href)).slice(0, 16) + '.'+'n138kz.send_Discord' );
+                saved_config=saved_config?saved_config:running_config;
+
                 /* Discord endpoint **/
-                const loaded_config=await getConfig();
-                let wh_endpoint=loaded_config.external.discord.webhooks[0].webhook_url;
+                let wh_endpoint=running_config.webhook_url;
                 wh_endpoint=wh_endpoint.split('/');
                 wh_endpoint[wh_endpoint.length-2]=atob(wh_endpoint[wh_endpoint.length-2]);
                 wh_endpoint[wh_endpoint.length-1]=atob(wh_endpoint[wh_endpoint.length-1]);
