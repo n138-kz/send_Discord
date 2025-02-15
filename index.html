@@ -93,8 +93,8 @@
                                 { inline: false, name: null, value: null, },
                             ],
                             footer: {
-                                text: '.',
                                 icon_url: running_config.avatar_url,
+                                text: null,
                             },
                         },
                     ],
@@ -111,6 +111,7 @@
                 payload_json.embeds[0].author.name=payload_json.username;
                 payload_json.embeds[0].thumbnail.url=payload_json.avatar_url;
                 payload_json.embeds[0].fields=[];
+                payload_json.embeds[0].footer.text=':';
 
                 Array.from(document.querySelector('form#'+form_id+' input[type="file"][name="files[]"]').files).map((file)=>{
                     payload_json.embeds[0].fields.push({
