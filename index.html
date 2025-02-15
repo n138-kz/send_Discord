@@ -67,10 +67,22 @@
                 /* Discord endpoint **/
                 FORM.action=convert_webhook_url(running_config.webhook_url);
                 
+                /* **/
+                let group_mention=document.querySelector('form#'+form_id+' input[type="radio"][name="group_mention"]:checked');
+                if(group_mention&1){
+                    if(group_mention&2){
+                        group_mention='@everyone';
+                    } else {
+                        group_mention='@here';
+                    }
+                } else {
+                    group_mention='';
+                }
+                
                 let payload_json={
                     avatar_url: running_config.avatar_url,
                     username: running_config.username,
-                    content: '@ here',
+                    content: group_mention,
                     embeds: [
                         {
                             title: 'File Uploaded.',
@@ -194,9 +206,9 @@
                 <tr>
                     <th>Mention</th>
                     <td>
-                        <label><input type="radio" name="group_mention" id="none" checked>None</label>
-                        <label><input type="radio" name="group_mention" id="here">Here</label>
-                        <label><input type="radio" name="group_mention" id="everyone">Everyone</label>
+                        <label><input type="radio" name="group_mention" value="0" checked>None</label>
+                        <label><input type="radio" name="group_mention" value="1">Here</label>
+                        <label><input type="radio" name="group_mention" value="3">Everyone</label>
                     </td>
                 </tr>
                 <tr>
