@@ -27,47 +27,60 @@
             const json = await response.json();
             return await json;
         }
-        async function pushToDiscord() {
-            const loaded_config=await getConfig();
-            let wh_endpoint=loaded_config.external.discord.webhooks[0].url;
-            wh_endpoint=wh_endpoint.split('/');
-            wh_endpoint[wh_endpoint.length-2]=atob(wh_endpoint[wh_endpoint.length-2]);
-            wh_endpoint[wh_endpoint.length-1]=atob(wh_endpoint[wh_endpoint.length-1]);
-            wh_endpoint=wh_endpoint.join('/');
-            
-            let url=wh_endpoint;
-            let header=new Headers();
-            header.append('Content-Type', 'multipart/form-data');
-            let files=document.querySelector('#send_Discord_files').files;
-            let content=document.querySelector('#send_Discord_content').value+'\n```json\n'+JSON.stringify({
-                'message': document.querySelector('#send_Discord_content').value,
-                'remote_address': JSON.parse(sessionStorage.getItem( (btoa(location.href)).slice(0, 16) + '.'+'n138kz.isJP' )),
-                'location_href': location.origin+location.pathname,
-                'event_at': new Date().getTime()/10**3,
-            })+'\n```';
+        async function pushToDiscord(form_id=null) {
+            try {
+                if(form_id==false){throw new Error('form_id: Null');}
+                const FORM=document.querySelector('form#'+form_id);
 
-            let data=new FormData();
-            data.append('content', content);
-            //data.append('file', files[0]);
-            console.log({
-                url: url,
-                headers: header,
-                files: files,
-                content: content,
-                data: data,
-            });
-            console.log(...data.entries());
-
-            let response = await fetch(url,{
-                method: 'POST',
-                mode: 'cors',
-                headers: header,
-                body: data,
-            });
-            let json = await response.json();
-            console.log({
-                'response': await json,
-            });
+                /* Discord endpoint **/
+                const loaded_config=await getConfig();
+                let wh_endpoint=loaded_config.external.discord.webhooks[0].url;
+                wh_endpoint=wh_endpoint.split('/');
+                wh_endpoint[wh_endpoint.length-2]=atob(wh_endpoint[wh_endpoint.length-2]);
+                wh_endpoint[wh_endpoint.length-1]=atob(wh_endpoint[wh_endpoint.length-1]);
+                wh_endpoint=wh_endpoint.join('/');
+                FORM.action=wh_endpoint;
+                
+                let url=wh_endpoint;
+                let header=new Headers();
+                header.append('Content-Type', 'multipart/form-data');
+                let files=document.querySelector('#send_Discord_files').files;
+                let content=document.querySelector('#send_Discord_content').value+'\n```json\n'+JSON.stringify({
+                    'message': document.querySelector('#send_Discord_content').value,
+                    'remote_address': JSON.parse(sessionStorage.getItem( (btoa(location.href)).slice(0, 16) + '.'+'n138kz.isJP' )),
+                    'location_href': location.origin+location.pathname,
+                    'event_at': new Date().getTime()/10**3,
+                })+'\n```';
+    
+                let data=new FormData();
+                data.append('content', content);
+                //data.append('file', files[0]);
+                console.log({
+                    url: url,
+                    headers: header,
+                    files: files,
+                    content: content,
+                    data: data,
+                });
+                console.log(...data.entries());
+    
+                let response = await fetch(url,{
+                    method: 'POST',
+                    mode: 'cors',
+                    headers: header,
+                    body: data,
+                });
+                let json = await response.json();
+                console.log({
+                    'response': await json,
+                });
+            } catch (error) {
+                console.error(error);
+            } finally {
+                Array.from(document.querySelectorAll('form')).map((form)=>{
+                    form.action='';
+                });
+            }
         }
         window.addEventListener('DOMContentLoaded', async ()=>{
             let domitem=[];
@@ -136,7 +149,7 @@
                 <tr>
                     <th></th>
                     <td>
-                        <input type="button" value="Submit" onclick="pushToDiscord()">
+                        <input type="button" value="Submit" onclick="pushToDiscord(this.parentNode.parentNode.parentNode.parentNode.parentNode.id)">
                     </td>
                 </tr>
             </tbody>
