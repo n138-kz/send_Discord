@@ -111,6 +111,9 @@
                     });
                 });
                 console.log([payload_json,JSON.stringify(payload_json,null,' '.repeat(4))]);
+
+                document.querySelector('form#'+'send_Discord_main input[type="hidden"][name="payload_json"]').value=JSON.stringify(payload_json);
+                FORM.submit();
                 
                 
             } catch (error) {
@@ -183,6 +186,7 @@
                     <th>Description</th>
                     <td>
                         <textarea id="send_Discord_content" required></textarea>
+                        <input type="hidden" name="payload_json" id="send_Discord_payload">
                     </td>
                 </tr>
                 <tr>
