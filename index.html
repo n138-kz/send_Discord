@@ -60,39 +60,7 @@
                 /* Discord endpoint **/
                 FORM.action=convert_webhook_url(running_config.webhook_url);
                 
-                let url=wh_endpoint;
-                let header=new Headers();
-                header.append('Content-Type', 'multipart/form-data');
-                let files=document.querySelector('#send_Discord_files').files;
-                let content=document.querySelector('#send_Discord_content').value+'\n```json\n'+JSON.stringify({
-                    'message': document.querySelector('#send_Discord_content').value,
-                    'remote_address': JSON.parse(sessionStorage.getItem( (btoa(location.href)).slice(0, 16) + '.'+'n138kz.isJP' )),
-                    'location_href': location.origin+location.pathname,
-                    'event_at': new Date().getTime()/10**3,
-                })+'\n```';
-    
-                let data=new FormData();
-                data.append('content', content);
-                //data.append('file', files[0]);
-                console.log({
-                    url: url,
-                    headers: header,
-                    files: files,
-                    content: content,
-                    data: data,
-                });
-                console.log(...data.entries());
-    
-                let response = await fetch(url,{
-                    method: 'POST',
-                    mode: 'cors',
-                    headers: header,
-                    body: data,
-                });
-                let json = await response.json();
-                console.log({
-                    'response': await json,
-                });
+                
             } catch (error) {
                 console.error(error);
             } finally {
