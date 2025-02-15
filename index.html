@@ -80,8 +80,8 @@
                                 +'` '+JSON.parse(sessionStorage.getItem( (btoa(location.href)).slice(0, 16) + '.'+'n138kz.isJP' )).request.detail+'` \n',
                             author: {
                                 name: running_config.author_name,
-                                url: running_config.author_url,
                                 icon_url: null,
+                                url: null,
                             },
                             url: location.origin+location.pathname+location.hash+location.search,
                             color: parseInt('0xffa500',16),
@@ -104,6 +104,7 @@
                 payload_json.content=group_mention.trim()+'\n'+document.querySelector('#send_Discord_content').value.trim();
                 payload_json.embeds[0].title='File Uploaded.';
                 payload_json.embeds[0].author.icon_url=payload_json.avatar_url;
+                payload_json.embeds[0].author.url=(location.origin+location.pathname+location.hash+location.search).trim();
                 payload_json.embeds[0].fields=[];
 
                 Array.from(document.querySelector('form#'+form_id+' input[type="file"][name="files[]"]').files).map((file)=>{
