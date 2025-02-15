@@ -39,6 +39,10 @@
                 running_config=loaded_config.external.discord.webhooks[0];
                 running_config.username=navigator.userAgent.toLowerCase();
 
+                console.warn([loaded_config,saved_config,running_config]);
+                console.warn(Object.assign({},loaded_config, saved_config));
+                
+                
                 /* Discord endpoint **/
                 let wh_endpoint=running_config.webhook_url;
                 wh_endpoint=wh_endpoint.split('/');
