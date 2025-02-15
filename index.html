@@ -35,7 +35,8 @@
                 /* Config **/
                 let saved_config=localStorage.getItem( (btoa(location.href)).slice(0, 16) + '.'+'n138kz.send_Discord.config' );
                 saved_config=saved_config?saved_config:{};
-                let loaded_config=await getConfig();
+                //let loaded_config=await getConfig();
+                let loaded_config='{"external":{"discord":{"webhooks":[{"webhook_url":"https://discordapp.com/api/webhooks/1340268050380882023/j5iZXpsbP6PSdrWR3MaFTtHI286nz3uxhebJ_dMpPXDZyIjnX7XjVSG7xf3nJhKdlza-","avatar_url":"https://cdn.discordapp.com/embed/avatars/0.png","username":""}]}}}';
                 running_config=loaded_config.external.discord.webhooks[0];
                 running_config.username=navigator.userAgent.toLowerCase();
 
