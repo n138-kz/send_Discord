@@ -128,7 +128,7 @@
             const github_rates=await getGithubRatelimit();
             sessionStorage.setItem( (btoa(location.href)).slice(0, 16) + '.'+'github.ratelimit', JSON.stringify(github_rates) );
             console.log('github.ratelimit', github_rates);
-            
+
             document.querySelector('#send_Discord_files').addEventListener('change',(e)=>{
                 console.log(e.target.files);
                 document.querySelector('#send_Discord_content').value='Attated files:';
