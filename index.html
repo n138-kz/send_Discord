@@ -120,6 +120,9 @@
                 /* **/
                 const myHeaders = new Headers();
                 myHeaders.append('Content-Disposition', 'form-data;name="payload_json"');
+                const myBodies = new FormData();
+                myBodies.append('payload_json', JSON.stringify(payload_json,null,' '.repeat(4)));
+
 
             } catch (error) {
                 console.error(error);
