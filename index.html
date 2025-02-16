@@ -146,7 +146,7 @@
                     mode: 'cors',
                     body: myBodies,
                 });
-                if(! await push.ok){throw new Error({code:await push.status,message:await push.statusText});}
+                if(! await push.ok){throw new Error(JSON.stringify({code:await push.status,message:await push.statusText}));}
                 let json=await push.json();
                 console.log(json);
                 let d=[];
@@ -163,6 +163,7 @@
                 document.body.appendChild(d[0]);
             } catch (error) {
                 console.error(error);
+                error=Array.isArray(error)?error:JSON.parse(error);
                 let d=[];
                 d[0]=document.createElement('table');
                 d[0].classList.add('status_error');
