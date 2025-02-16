@@ -63,8 +63,8 @@
                 
                 /* **/
                 let group_mention=document.querySelector('form#'+form_id+' input[type="radio"][name="group_mention"]:checked');
-                if(group_mention&1){
-                    if(group_mention&2){
+                if((group_mention&1)>0){
+                    if((group_mention&2)>0){
                         group_mention='@everyone';
                     } else {
                         group_mention='@here';
