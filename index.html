@@ -46,7 +46,7 @@
                 const FORM=document.querySelector('form#'+form_id);
 
                 /* **/
-                Array.from(document.querySelectorAll('form#'+form_id+' input[type="button"]')).map((v)=>{
+                Array.from(document.querySelectorAll('form#'+form_id+' input, form#'+form_id+' select, form#'+form_id+' textarea')).map((v)=>{
                     v.disabled=true;
                     v.dataset.processing=true;
                 });
