@@ -134,6 +134,12 @@
                 }
 
                 /* **/
+                console.log('await fetch',{
+                    method: 'POST',
+                    mode: 'cors',
+                    myHeaders,
+                    myBodies,
+                });
                 let push=await fetch(running_config.webhook_url, {
                     method: 'POST',
                     mode: 'cors',
