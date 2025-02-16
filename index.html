@@ -167,7 +167,11 @@
                 if(await push.ok){
                     d[2].innerText=`OK; ${files.length} files(${sizes} bytes) 送信完了`;
                 } else {
-                    d[2].innerText=push.statusText;
+                    if (json.message!='') {
+                        d[2].innerText=json.message;
+                    } else {
+                        d[2].innerText=push.statusText;
+                    }
                 }
                 d[1].appendChild(d[2]);
                 d[0].appendChild(d[1]);
