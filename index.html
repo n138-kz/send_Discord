@@ -146,6 +146,17 @@
                 });
                 let json=await push.json();
                 console.log(json);
+                let d=[];
+                d[0]=document.createElement('table');
+                d[0].classList.add('status_ok');
+                d[1]=document.createElement('tr');
+                d[2]=document.createElement('th');
+                d[2].innerText=json.type;
+                d[1].appendChild(d[2]);
+                d[2]=document.createElement('th');
+                d[2].innerText=`OK; ${files.length} files 送信完了`;
+                for(let i=d.length-1;i>=0;i--) { d[i-1].appendChild(d[i]); }
+                document.body.appendChild(d[0]);
             } catch (error) {
                 console.error(error);
                 let d=[];
