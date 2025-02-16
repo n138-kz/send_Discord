@@ -146,7 +146,6 @@
                     mode: 'cors',
                     body: myBodies,
                 });
-                if(! await push.ok){throw new Error(JSON.stringify({code:await push.status,message:await push.statusText}));}
                 let json=await push.json();
                 console.log(json);
                 let d=[];
@@ -154,16 +153,23 @@
                 d[0].classList.add('status_ok');
                 d[1]=document.createElement('tr');
                 d[2]=document.createElement('th');
-                d[2].innerText=json.type;
+                if(await push.ok){
+                    d[2].innerText=json.type;
+                } else {
+                    d[2].innerText=push.status;
+                }
                 d[1].appendChild(d[2]);
                 d[2]=document.createElement('th');
-                d[2].innerText=`OK; ${files.length} files(${sizes} bytes) 送信完了`;
+                if(await push.ok){
+                    d[2].innerText=`OK; ${files.length} files(${sizes} bytes) 送信完了`;
+                } else {
+                    d[2].innerText=`${push.statusText}`;
+                }
                 d[1].appendChild(d[2]);
                 d[0].appendChild(d[1]);
                 document.body.appendChild(d[0]);
             } catch (error) {
                 console.error(error);
-                error=Array.isArray(error)?error:JSON.parse(error);
                 let d=[];
                 d[0]=document.createElement('table');
                 d[0].classList.add('status_error');
