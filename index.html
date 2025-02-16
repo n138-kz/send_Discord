@@ -137,14 +137,14 @@
                 console.log('await fetch',{
                     method: 'POST',
                     mode: 'cors',
-                    myHeaders,
-                    myBodies,
+                    headers: myHeaders,
+                    body: myBodies.getAll(),
                 });
                 let push=await fetch(running_config.webhook_url, {
                     method: 'POST',
                     mode: 'cors',
-                    myHeaders,
-                    myBodies,
+                    headers: myHeaders,
+                    body: myBodies,
                 });
                 let json=await push.json();
                 console.log(json);
