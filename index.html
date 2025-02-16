@@ -160,7 +160,11 @@
                 if(await push.ok){
                     d[2].innerText=json.type;
                 } else {
-                    d[2].innerText=push.status;
+                    if (json.code!='') {
+                        d[2].innerText=json.code;
+                    } else {
+                        d[2].innerText=push.status;
+                    }
                 }
                 d[1].appendChild(d[2]);
                 d[2]=document.createElement('th');
