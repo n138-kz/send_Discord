@@ -121,13 +121,13 @@
                         },null,' '.repeat(4))+'```\n',
                     });
                 });
-                console.log([payload_json,JSON.stringify(payload_json,null,' '.repeat(4))]);
+                console.log([payload_json,JSON.stringify(payload_json)]);
 
                 /* **/
                 const myHeaders = new Headers();
                 myHeaders.append('Content-Disposition', 'form-data;name="payload_json"');
                 const myBodies = new FormData();
-                myBodies.append('payload_json', JSON.stringify(payload_json,null,' '.repeat(4)));
+                myBodies.append('payload_json', JSON.stringify(payload_json));
                 let files=Array.from(document.querySelector('form#'+form_id+' input[type="file"][name="files[]"]').files);
                 for(let i=0;i<files.length;i++){
                     myBodies.append('files['+i+']', files[i]);
