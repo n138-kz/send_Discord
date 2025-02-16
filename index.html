@@ -148,6 +148,10 @@
                 console.log(json);
             } catch (error) {
                 console.error(error);
+                let d=document.createElement('div');
+                d.classList.add('status_error');
+                d.innerText=error;
+                document.body.appendChild(d);
             } finally {
                 Array.from(document.querySelectorAll('form')).map((form)=>{
                     form.action='';
