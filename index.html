@@ -62,7 +62,7 @@
                 running_config.webhook_url=convert_webhook_url(running_config.webhook_url)+'?wait=true';
                 
                 /* **/
-                let group_mention=document.querySelector('form#'+form_id+' input[type="radio"][name="group_mention"]:checked');
+                let group_mention=Math.trunc(document.querySelector('form#'+form_id+' input[type="radio"][name="group_mention"]:checked').value);
                 if((group_mention&1)>0){
                     if((group_mention&2)>0){
                         group_mention='@everyone';
