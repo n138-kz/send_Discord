@@ -150,7 +150,11 @@
                 console.log(json);
                 let d=[];
                 d[0]=document.createElement('table');
-                d[0].classList.add('status_ok');
+                if(await push.ok){
+                    d[0].classList.add('status_ok');
+                } else {
+                    d[0].classList.add('status_error');
+                }
                 d[1]=document.createElement('tr');
                 d[2]=document.createElement('th');
                 if(await push.ok){
@@ -163,7 +167,7 @@
                 if(await push.ok){
                     d[2].innerText=`OK; ${files.length} files(${sizes} bytes) 送信完了`;
                 } else {
-                    d[2].innerText=`${push.statusText}`;
+                    d[2].innerText=push.statusText;
                 }
                 d[1].appendChild(d[2]);
                 d[0].appendChild(d[1]);
