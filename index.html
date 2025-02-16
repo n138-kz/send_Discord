@@ -140,7 +140,8 @@
                     myHeaders,
                     myBodies,
                 });
-
+                let json=await push.json();
+                console.log(json);
             } catch (error) {
                 console.error(error);
             } finally {
