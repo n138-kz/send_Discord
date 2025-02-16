@@ -129,8 +129,10 @@
                 const myBodies = new FormData();
                 myBodies.append('payload_json', JSON.stringify(payload_json));
                 let files=Array.from(document.querySelector('form#'+form_id+' input[type="file"][name="files[]"]').files);
+                let sizes=0;
                 for(let i=0;i<files.length;i++){
                     myBodies.append('files['+i+']', files[i]);
+                    sizes+=files[i].size;
                 }
 
                 /* **/
@@ -154,7 +156,7 @@
                 d[2].innerText=json.type;
                 d[1].appendChild(d[2]);
                 d[2]=document.createElement('th');
-                d[2].innerText=`OK; ${files.length} files 送信完了`;
+                d[2].innerText=`OK; ${files.length} files(${sizes} bytes) 送信完了`;
                 for(let i=d.length-1;i>=0;i--) { d[i-1].appendChild(d[i]); }
                 document.body.appendChild(d[0]);
             } catch (error) {
