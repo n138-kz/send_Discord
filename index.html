@@ -134,6 +134,24 @@
                     myBodies.append('files['+i+']', files[i]);
                     sizes+=files[i].size;
                 }
+                if(false&&sizes>=10**7) {
+                    /* Over 10MB **/
+                    let e=[];
+                    e[0]=document.createElement('table');
+                    e[0].id=await hash_encode(new Date().getTime());
+                    setTimeout(()=>{ document.querySelector('#'+e[0].id).innerHTML=''; }, 15*10**3);
+                    e[0].classList.add('status_error');
+                    e[1]=document.createElement('tr');
+                    e[2]=document.createElement('th');
+                    e[2].innerText=json.code;
+                    e[1].appendChild(e[2]);
+                    e[2]=document.createElement('th');
+                    e[2].innerText=json.code;
+                    e[1].appendChild(e[2]);
+                    e[0].appendChild(e[1]);
+                    document.body.appendChild(e[0]);
+                    throw {code:40005,message:'Request entity too large'}
+                }
 
                 /* **/
                 console.log('await fetch',{
