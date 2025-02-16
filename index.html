@@ -45,6 +45,12 @@
                 if(form_id==false){throw new Error('form_id: Null');}
                 const FORM=document.querySelector('form#'+form_id);
 
+                /* **/
+                Array.from(document.querySelectorAll('form#'+form_id+' input[type="button"]')).map((v)=>{
+                    v.disabled=true;
+                    v.dataset.processing=true;
+                });
+
                 /* Config **/
                 let saved_config=localStorage.getItem( (btoa(location.href)).slice(0, 16) + '.'+'n138kz.send_Discord.config' );
                 saved_config=saved_config?saved_config:{};
@@ -140,6 +146,10 @@
             } finally {
                 Array.from(document.querySelectorAll('form')).map((form)=>{
                     form.action='';
+                });
+                Array.from(document.querySelectorAll('form#'+form_id+' [data-processing="true"]')).map((v)=>{
+                    v.disabled=false;
+                    delete v.dataset.processing;
                 });
             }
         }
